@@ -1,0 +1,57 @@
+
+@import url(http://fonts.googleapis.com/css?family=Cinzel+Decorative);
+@import url(http://fonts.googleapis.com/css?family=Quattrocento);
+
+/*
+header > div {
+  float: left;
+  width: 200px;
+  border: 1px dashed red;
+}
+*/
+
+body {
+  font-family: 'Quattrocento', serif;
+  background-color: #6666CC;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding: 0 20px;
+}
+
+section p {
+  padding: 10px;
+  line-height: 20px;
+}
+
+section p:nth-child(2n) {
+  color: red;
+}
+
+.clear {
+  clear: both;
+}
+
+#logoimg {
+  float: left;
+  width: 100px;
+}
+
+#logotxt {
+  float: left;
+  width: 400px;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 35px;
+  padding-top: 23px;
+  padding-bottom: 23px;
+}
+
+a:hover {
+  background-color: green;
+}
