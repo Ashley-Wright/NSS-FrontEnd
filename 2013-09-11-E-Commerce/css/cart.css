@@ -1,0 +1,99 @@
+
+.cart_item {
+  height: 195px;
+  border: 1px solid #FF9900;
+  margin: 0 35px 10px 35px;
+  position: relative;
+}
+
+#cart_heading {
+  margin: 30px 0 10px 35px;
+  font-size: 27px;
+}
+
+.pro_name {
+  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: blue;
+  text-decoration: underline;
+}
+
+img{
+  /*position: absolute;*/
+  /*border: 1px solid red;*/
+  float: left;
+  margin-left: 20px;
+}
+
+table{
+  float: right;
+  padding: 20px;
+  border-spacing: 30px 10px;
+  width: 80%;
+  line-height: 30px;
+  margin-top: 25px;
+}
+
+td, th {
+  /*border: thin dotted gray;*/
+  text-align: center;
+}
+
+.quantity {
+  border: 1px solid gray;
+  -moz-box-shadow: inset 2px 2px 2px gray;
+  -webkit-box-shadow: inset 2px 2px 2px gray;
+  box-shadow: inset 2px 2px 2px gray;
+  padding: 2px 10px;
+}
+
+div .clear {
+  clear:both;
+}
+
+.stock {
+  color: gray;
+  margin-left: 10px;
+  padding-top: 3px;
+  font-style: italic;
+}
+
+.remove {
+  color: blue;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+#checkout {
+  width: 30%;
+  float: right;
+}
+
+#checkout ul {
+  line-height: 30px;
+  text-align: center;
+  margin-right: 70px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #FF9900;
+  font-family: 'Inika', serif;
+  font-size: 17px;
+  /*padding: 6px 30px;*/
+  height: 30px;
+  width: 150px;
+  border-radius: 10px;
+  border-bottom-color: black;
+  border-right-color: black;
+  border-top-color: rgba(0, 0, 0, 0.5);
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+  background-color: rgba(255, 153, 0, 0.8);
+  /*font-family: 'Nosifer', cursive;*/
+  /*font-size: 15px;*/
+  /*padding: 4px 0 0 0;*/
+}
