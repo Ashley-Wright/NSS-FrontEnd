@@ -1,0 +1,11 @@
+.question{
+  background-color:#ffffff;
+  font-family: 'Inika', serif;
+  font-weight: bold;
+}
+
+.answer{
+  margin-left: 40px;
+  line-height: 25px;
+
+}

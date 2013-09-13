@@ -2,37 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Shopping Cart</title>
+  <title>E-Commerce Halloween</title>
 
+  <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/shopping_cart.css">
+  <link rel="stylesheet" href="css/product.css">
+  <!-- <link rel="stylesheet" href="css/shopping_cart.css"> -->
+  <link rel="stylesheet" href="css/cart.css">
+
 </head>
 
 <body>
 <header>
-<div id="logo">
-<h1>Happy Halloween Shopping</h1>
+<div id="shopping_cart_home_img">
 </div>
+<div id="logo">
+<h1>Halloween Shopping.COM</h1>
+</div>
+
+</header>
 
  <nav>
   <ul>
    <li><a href="index.html">Home</a></li>
    <li><a href="about.html">About</a></li>
-   <li><a href="about.html">Products</a>
-    <ul>
-      <li><a href="about.html">Product 1</a></li>
-      <li><a href="about.html">Product 2</a></li>
-      <li><a href="about.html">Product 3</a></li>
-    </ul>
-  </li>
+   <li><a href="product.html">Products</a>
+   <li><a href="spookysounds.html">Product 1</a></li>
+   <li><a href="strobelight.html">Product 2</a></li>
+   <li><a href="tombstone.html">Product 3</a></li>
    <li><a href="cart.html">Shopping Cart</a></li>
-   <li><a href="FAQ.html">FAQ</a></li>
+   <li><a href="faq.html">FAQ</a></li>
    <li><a href="contact.html">Contact</a></li>
  </nav>
-</header>
 
-<h4 id="cart_heading">Your Shopping Cart</h4>
+<section id="wrapper">
+  <h4>Your Shopping Cart</h4>
+<h4 id="cart_heading"></h4>
 <div class="cart_item">
   <h5 class="pro_name"><a href="strobelight.html">Strobe Light</a></h5>
   <img src="images/strobelight.jpg" width="125px">
@@ -64,9 +70,9 @@
       <th>Subtotal:</th>
     </tr>
     <tr>
-      <td>$99.99</td>
+      <td>$29.99</td>
       <td><span class="quantity">1</span></td>
-      <td>$99.99</td>
+      <td>$29.99</td>
     </tr>
   </table>
   <div class="clear"></div>
@@ -98,17 +104,13 @@
 <section id="checkout">
   <ul>
     <li>Shipping: $0.00</li>
-    <li>Total: $209.96</li>
+    <li>Total: $139.96</li>
     <li><button>Checkout</button></li>
   </ul>
 </section>
-
-<div class="clear"></div>
-
-<footer>
+<footer class="clear">
   <small> (c) Ashley, Anthony, Scott, Arielle 3rd Cohort Software School</small>
 </footer>
 
 </body>
-
 </html>

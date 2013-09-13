@@ -1,15 +1,14 @@
-
 h2 {
-  margin-top: 10px;
+
 }
 
-#about p{
+#about {
   padding:5px;
   line-height: 20px;
-  margin-top: 20px;
   font-style: normal;
   background-color: white;
   color: black;
+  padding-left:10px;
 }
 
 p span {

@@ -1,0 +1,150 @@
+@import url(http://fonts.googleapis.com/css?family=Nosifer);
+@import url(http://fonts.googleapis.com/css?family=Inika);
+
+/*Arielle styling-------------------------------------AA*/
+body{
+background-color:#ffffff;
+font-family: 'Inika', serif;
+width:960px;
+height:100%;
+margin:0 auto;
+padding:10px;
+}
+
+.p_format{
+  width:940px;
+  padding:10px;
+  line-height: 20px;
+  text-align: justify;
+}
+
+#p_format_index{
+padding-right:10px;
+}
+/*this is the 960px width header*/
+header{
+  width:960px;
+  height:150px;
+  border-bottom: 2px solid #ffffff;
+  background-color:#000000;
+  color:#FF9900;
+  border-radius: 10px;
+  position: relative;
+}
+
+/*the main head text
+"Happy Halloween Shopping"*/
+#logo{
+  width:600px;
+  height:150px;
+  font-size: 60px;
+  font-family: 'Nosifer', cursive;
+  padding-top:20px;
+  padding-left:10px;
+  color:#FF9900;
+}
+
+/*this is the shopping cart on the home page*/
+#shopping_cart_home_img{
+width:50px;
+height:50px;
+float:right;
+background-image:url(http://www.websitemonster.net/images/used%20in%20website/shopping_cart.png);
+background-repeat: no-repeat;
+}
+
+/*Beginning of Top Nav------------------------AA*/
+nav{
+width:960px;
+height:30px;
+background-color:#000000;
+list-style: none;
+position: relative;
+border-radius: 10px;
+line-height: 30px;
+}
+nav li{
+  display:inline;
+  padding-left:20px;
+}
+nav ul li a{
+  text-decoration: none;
+  color: #FF9900;
+  font-weight:bold;
+}
+nav a:hover{
+  color:#ffffff;
+}
+ /*end of the top nav----------------------------AA*/
+
+/*this is the wrapper which wraps around the main section and
+holds the content together*/
+#wrapper{
+  height:100%;
+  background-color:#ffffff;
+  padding:10px;
+  position:relative;
+  width:960px;
+  overflow: hidden;
+}
+
+#video{
+padding:10px 10px 0px 0px;
+float:left;
+}
+
+section > h1  {
+ font-family: 'Nosifer', cursive;
+  font-size: 20px;
+}
+
+.clear
+{
+  clear:both;
+}
+
+section > p{
+  padding:2px;
+  line-height: 20px;
+  text-align:justify;
+}
+
+/*this is the shop now button on index page*/
+#button_home a{
+color:#FF9900;
+width:300px;
+height:50px;
+border-radius: 10px;
+font-weight: bold;
+font-size:18px;
+background-color: #000000;
+text-decoration: none;
+padding:5px;
+position:relative;
+top:20px;
+left:10%;
+}
+#button_home a:hover{
+color:#ffffff;
+}
+
+
+/* just in case selection code
+section > p:nth-of-type(2n){
+font-style: italic;
+color:#fff;
+background-color:#000;
+}
+*/
+
+footer{
+  height:150px;
+  background-color:#000000;
+  color:#FF9900;
+  padding:10px;
+  border-radius: 10px;
+  line-height:90px;
+  text-align: center;
+}
+
+/*end of Arielle styling-------------------------*/
