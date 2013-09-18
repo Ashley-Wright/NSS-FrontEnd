@@ -1,0 +1,72 @@
+
+/*#container {
+  width: 960px;
+  margin: auto;
+  background-color: blue;
+}*/
+
+body {
+  background: url(../images/tile.jpg);
+}
+
+body > div {
+  width: 960px;
+  margin: auto;
+}
+
+/*
+#LC {
+  width: 600px;
+  background-color: green;
+  float: left;
+}
+
+#RC {
+  width: 360px;
+  background-color: red;
+  float: right;
+}*/
+
+body > div > section:nth-child(1) {
+  width: 600px;
+  /*background-color: green;*/
+  float: left;
+  border-right: 2px dashed black;
+}
+
+body > div > section:nth-child(2) {
+  width: 358px;
+  /*background-color: red;*/
+  float: left;
+}
+
+/*
+#LC p:first-of-type {
+  width: 290px;
+  background-color: yellow;
+  float: left;
+}
+
+#LC p:nth-of-type(2) {
+  width: 290px;
+  background-color: yellow;
+  float: right;
+}
+*/
+
+body > div > section:nth-child(2) p {
+  width: 320px;
+  /*background-color: purple;*/
+  margin: 0 20px;
+}
+
+body > div> section:nth-child(1) p {
+  width: 290px;
+  /*background-color: purple;*/
+  float: left;
+  margin: 0px 5px;
+}
+
+.clear {
+  clear: both;
+}
