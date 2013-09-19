@@ -1,0 +1,50 @@
+@import url(http://fonts.googleapis.com/css?family=Aldrich);
+@import url(http://fonts.googleapis.com/css?family=Prosto+One);
+header {
+  border: 1px dashed #ba0909; }
+  header #logo {
+    width: 78px;
+    height: 105px;
+    background: url(../images/tesla_flag.png);
+    float: left; }
+  header #company {
+    float: left; }
+    header #company h1 {
+      font-family: "Aldrich", cursive;
+      margin-left: 50px;
+      margin-top: 30px; }
+
+nav ul {
+  list-style: none;
+  padding: 0; }
+  nav ul li {
+    display: inline-block;
+    padding-right: 50px; }
+
+#content section h1 {
+  font-size: 28px;
+  color: #ba0909; }
+#content section h2 {
+  font-size: 26px;
+  color: #893a3a; }
+#content section p {
+  font-size: 20px;
+  color: #757575; }
+
+footer p {
+  font-size: 20px -4px;
+  color: #ba0909; }
+
+#main {
+  width: 960px;
+  margin: auto; }
+
+.clear {
+  clear: both; }
+
+a {
+  text-decoration: none;
+  color: #ba0909; }
+  a:hover {
+    text-decoration: underline;
+    color: #933030; }
