@@ -11,17 +11,6 @@ body{
 
 header{
 	margin-bottom: 10px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: #eae8e8;
-	z-index: 1;
-	width: 100%;
-	border-bottom: 2px solid #BBB5B0;
-	-webkit-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.19);
-	-moz-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.19);
-	box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.19);
-	padding-bottom: 7px;
 }
 
 header > h1{
@@ -78,8 +67,6 @@ header > nav > ul > li a:hover{
 	width: 1000px;
 	margin: auto;
 	font-family: 'Adamina', serif;
-	position: relative;
-	top: 140px;
 }
 
 .first{
@@ -260,8 +247,6 @@ footer{
 	-webkit-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.19);
 	-moz-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.19);
 	box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.19);
-	position: relative;
-	top: 140px;
 }
 
 footer > section{
@@ -302,7 +287,7 @@ footer > section{
 	border: 10px;
 }
 
-.social:before{
+/*.social:before{
 	content: '';
 	width: 0;
 	height: 100px;
@@ -310,7 +295,7 @@ footer > section{
 	margin-top: 13px;
 	right: 494px;
 	border: 1px solid #BBB5B0;
-}
+} */
 
 .social{
 	width: 306px;
@@ -318,6 +303,8 @@ footer > section{
 	float: left;
 	color: #BBB5B0;
 	padding-left: 25px;
+	border-left: 1px solid #BBB5B0;
+	margin-top: 13px;
 }
 
 .social > a > img{
