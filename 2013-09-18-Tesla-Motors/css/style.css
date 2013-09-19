@@ -21,15 +21,30 @@ nav ul {
     display: inline-block;
     padding-right: 50px; }
 
-#content section h1 {
+div#content section h1 {
+  color: #ba0909;
+  font-family: "Aldrich", cursive;
   font-size: 28px;
-  color: #ba0909; }
-#content section h2 {
+  line-height: 20px;
+  letter-spacing: 5px; }
+div#content section h2 {
+  color: #893a3a;
+  font-family: "Aldrich", cursive;
   font-size: 26px;
-  color: #893a3a; }
-#content section p {
-  font-size: 20px;
-  color: #757575; }
+  line-height: 20px;
+  letter-spacing: 3px; }
+div#content section p {
+  color: #ff0033;
+  font-family: "Aldrich", cursive;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  margin: 5px;
+  padding: 10px;
+  border: 2px dashed green;
+  border-radius: 20px;
+  background-color: yellow;
+  box-shadow: 5px 5px 10px black; }
 
 footer p {
   font-size: 20px -4px;
