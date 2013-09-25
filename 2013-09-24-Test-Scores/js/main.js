@@ -10,11 +10,10 @@ for(i = 1; i <= 10; i++)
 
 console.log(scores);
 
-var sum = 0
+var sum = 0;
 
 for(i = 0; i <= scores.length - 1; i++)
   sum += scores[i];
-
 
 var avg = sum / scores.length;
 
