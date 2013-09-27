@@ -33,12 +33,28 @@ while(response)
   response = prompt("Name of item");
 }
 
-console.log("Appetizers");
-catagory("appetizer");
-console.log("Salads");
-catagory("salad");
-console.log("Lunch");
-catagory("lunch");
+var catagories = [];
+catagories.push(menu_items[0].type);
+for(i = 1; i < menu_items.length; i++)
+{
+  for(j = 0; j < catagories.length; j++)
+  {
+    if(menu_items[i].type == catagories[j])
+    {
+      break;
+    }
+    else
+    {
+      catagories.push(menu_items[i].type);
+    }
+  }
+}
+
+for(j = 0; j < catagories.length; j++)
+{
+  console.log(catagories[j]);
+  catagory(catagories[j]);
+}
 
 var calories = 0
 var total_cost = 0
@@ -50,9 +66,8 @@ for(i = 0; i < menu_items.length; i++)
 var avg_cost = (total_cost / menu_items.length);
 var avg_calories = (calories / menu_items.length);
 
-
 console.log("The number of items on the menu: " + menu_items.length);
-console.log("The number of sections: " + parseInt(3));
+console.log("The number of sections: " + catagories.length);
 console.log("The total calories: " + calories);
 console.log("The average calorie count: " + avg_calories);
 console.log("The total cost: " + total_cost);
