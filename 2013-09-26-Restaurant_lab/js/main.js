@@ -1,4 +1,16 @@
 
+function catagory(x)
+{
+  for(i = 0; i < menu_items.length; i++)
+  {
+    if(menu_items[i].type == x)
+    {
+      console.log(menu_items[i].name + " (" + menu_items[i].ingredients + ") $" + menu_items[i].price);
+    }
+  }
+}
+
+
 var menu_items = [];
 
 var response = prompt("Name of item");
@@ -22,29 +34,11 @@ while(response)
 }
 
 console.log("Appetizers");
-for(i = 0; i < menu_items.length; i++)
-{
-  if(menu_items[i].type == "appetizer")
-  {
-    console.log(menu_items[i].name + " (" + menu_items[i].ingredients + ") $" + menu_items[i].price);
-  }
-}
+catagory("appetizer");
 console.log("Salads");
-for(i = 0; i < menu_items.length; i++)
-{
-  if(menu_items[i].type == "salad")
-  {
-    console.log(menu_items[i].name + " (" + menu_items[i].ingredients + ") $" + menu_items[i].price);
-  }
-}
-console.log("Lunch")
-for(i = 0; i < menu_items.length; i++)
-{
-  if(menu_items[i].type == "lunch")
-  {
-    console.log(menu_items[i].name + " (" + menu_items[i].ingredients + ") $" + menu_items[i].price);
-  }
-}
+catagory("salad");
+console.log("Lunch");
+catagory("lunch");
 
 var calories = 0
 var total_cost = 0
