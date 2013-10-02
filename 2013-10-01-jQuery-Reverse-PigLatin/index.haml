@@ -1,0 +1,21 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %title HAML & SASS Template
+    %link{rel: 'stylesheet', href: 'css/normalize.css'}
+    %link{rel: 'stylesheet', href: 'css/style.css'}
+  %body
+    = Haml::Engine.new(File.read('haml/_header.haml')).render
+    = Haml::Engine.new(File.read('haml/_nav.haml')).render
+    = Haml::Engine.new(File.read('haml/_content.haml')).render
+    = Haml::Engine.new(File.read('haml/_footer.haml')).render
+
+    %input#original{type:'text'}
+    %span.sym &rarr;
+    %input#result{type:'text', readonly:true}
+    %input#button{type:'button', value:'Convert'}
+
+    %script{src: "js/jquery-1.10.2.min.js"}
+    %script{src: "js/underscore-min.js"}
+    %script{src: "js/main.js"}
