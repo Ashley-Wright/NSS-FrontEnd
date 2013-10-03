@@ -15,7 +15,7 @@ h2
 input
 {
   float: left;
-  margin: 38px 5px;
+  margin: 5px 5px;
 }
 
 .box
@@ -27,7 +27,25 @@ input
   margin: 10px;
 }
 
+.paintbox
+{
+  float: left;
+  width: 5px;
+  height: 5px;
+  border: 1px solid grey;
+  background-color: white;
+  margin: 1px;
+}
+
+#brush
+{
+  border: 1px dashed black;
+  padding: 3px 25px;
+  margin-left: 25px;
+}
+
 .clear
 {
   clear: both;
 }
+

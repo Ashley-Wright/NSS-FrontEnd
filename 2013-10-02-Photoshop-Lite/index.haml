@@ -9,9 +9,14 @@
     %h2 Photoshop Lite
     %input#color{type:'text', autofocus: true, placeholder:'Enter a color'}
     %input#add_color{type:'button', value:'Add Color'}
-    #brush.box
+    %span#brush
     .clear
     #colors
+    .clear
+    %input#amount{type: 'text', placeholder: '3'}
+    %input#add_box{type: 'button', value: 'Add Boxes!'}
+    .clear
+    #boxes
 
     %script{src: "js/jquery-1.10.2.min.js"}
     %script{src: "js/underscore-min.js"}
