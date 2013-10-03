@@ -1,0 +1,45 @@
+
+
+body
+{
+  width: 800px;
+  margin: auto;
+  background-color: gainsboro;
+  padding: 70px;
+}
+
+img
+{
+  width: 100px;
+  height: 100px;
+}
+
+#balance
+{
+  width: 200px;
+  height: 40px;
+  // background-color: white;
+}
+
+#deposit_list, #withdraw_list
+{
+  width: 300px;
+  float: left;
+}
+
+
+#deposit_list, #withdraw_list
+{
+  padding-bottom: 50px;
+  list-style-type: none;
+}
+
+.green
+{
+  color: green;
+}
+
+.red
+{
+  color: red;
+}
