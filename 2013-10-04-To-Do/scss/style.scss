@@ -1,0 +1,52 @@
+
+
+section
+{
+  width: 800px;
+  margin: auto;
+}
+
+span
+{
+  width: 200px;
+  float: left;
+}
+
+.clear
+{
+  clear: both;
+}
+
+table
+{
+  width: 700px;
+
+  td
+  {
+    text-align: center;
+
+    .colorBox
+    {
+      width: 35px;
+      height: 20px;
+      border: 1px solid grey;
+      margin: auto;
+    }
+
+    .checkbox
+    {
+      width: 20px;
+      height: 20px;
+    }
+
+    img
+    {
+      margin: 0 2px;
+    }
+  }
+}
+
+#addTask
+{
+  margin-top: 60px;
+}

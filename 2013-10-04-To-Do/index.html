@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>HAML & SASS Template</title>
+    <link href='css/normalize.css' rel='stylesheet'>
+    <link href='css/style.css' rel='stylesheet'>
+  </head>
+  <body>
+    <section>
+      <h2>To Do</h2>
+      <span>
+        <h4>Due Date</h4>
+        <input id='dueDate' type='text'>
+      </span>
+      <span>
+        <h4>Task</h4>
+        <input id='task' type='text'>
+      </span>
+      <span>
+        <h4>Color</h4>
+        <input id='color' type='text'>
+      </span>
+      <span>
+        <input id='addTask' type='button' value='Add Task'>
+      </span>
+    </section>
+    <div class='clear'></div>
+    <section>
+      <h2>Task List</h2>
+      <table>
+        <tr id='heading'>
+          <th>Due Date</th>
+          <th>Task</th>
+          <th>Color</th>
+          <th>Done?</th>
+          <th>Remove</th>
+          <th>Up/Down</th>
+        </tr>
+      </table>
+    </section>
+    <script src='js/jquery-1.10.2.min.js'></script>
+    <script src='js/underscore-min.js'></script>
+    <script src='js/main.js'></script>
+  </body>
+</html>
