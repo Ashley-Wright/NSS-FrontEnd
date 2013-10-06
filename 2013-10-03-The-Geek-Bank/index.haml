@@ -6,20 +6,27 @@
     %link{rel: 'stylesheet', href: 'css/normalize.css'}
     %link{rel: 'stylesheet', href: 'css/style.css'}
   %body
-    #main
-      %h1 The Geek Bank
-      %h2 Logo
+    %h1 The Geek Bank
+    %section
       %img#logo{src: '#'}
-      %input#logo_url{type:'text', placeholder: 'Enter url for a logo'}
-      %input#logo_button{type:'button', value:'Set Logo'}
+      #logo_controls
+        %input#logo_url{type:'text', placeholder: 'Enter url for a logo'}
+        %input#logo_button{type:'button', value:'Set Logo'}
+
+    %section
       %h2 Balance
       #balance $0.00
-      %input#enter_balance{type:'text', placeholder: 'Enter Balance'}
-      %input#balance_button{type:'button', value:'Set Balance'}
+      #balance_controls
+        %input#enter_balance{type:'text', placeholder: 'Enter Balance'}
+        %input#balance_button{type:'button', value:'Set Balance'}
+
+    %section
       %h3 Deposits and Withdraws
       %input#amount{type:'text', placeholder: 'Enter amount'}
       %input#deposit{type:'button', value:'Deposit'}
       %input#withdraw{type:'button', value:'Withdraw'}
+
+    %section
       %h2 Transactions List
       #deposit_list
         %h4 Deposits
@@ -27,10 +34,6 @@
       #withdraw_list
         %h4 Withdraws
         %ul
-    .clear
-
-
-
 
     %script{src: "js/jquery-1.10.2.min.js"}
     %script{src: "js/underscore-min.js"}

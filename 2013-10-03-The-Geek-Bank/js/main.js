@@ -10,7 +10,8 @@ function initialize() {
   $('#balance_button').click(setBalance);
   $('#deposit').click(addDeposit);
   $('#withdraw').click(addWithdraw);
-  $('#deposit_list ul').on('click', 'li', reverseDeposit);
+  $('#deposit_list').on('click', 'li', reverseDeposit);
+  $('#withdraw_list').on('click', 'li', reverseWithdraw);
 }
 
 function setLogo() {
@@ -18,6 +19,7 @@ function setLogo() {
   $('#logo').attr('src', url);
   $('#logo_url').val('');
   $('#enter_balance').focus();
+  $('#logo_controls').hide();
 }
 
 function setBalance() {
@@ -26,6 +28,7 @@ function setBalance() {
   $('#balance').text(dollarAmount(accountBalance));
   $('#enter_balance').val('');
   $('#amount').focus();
+  $('#balance_controls').hide();
 }
 
 function addDeposit() {
@@ -55,10 +58,24 @@ function addWithdraw() {
 }
 
 function reverseDeposit() {
-
+  var $transaction = $(this);
+  var string = $transaction.text();
+  var amount = string.substr(1, string.length - 4);
+  amount = parseInt(amount, 10);
+  accountBalance -= amount;
+  $('#balance').text(dollarAmount(accountBalance));
+  $transaction.remove();
 }
 
-
+function reverseWithdraw() {
+  var $transaction = $(this);
+  var string = $transaction.text();
+  var amount = string.substr(1, string.length - 4);
+  amount = parseInt(amount, 10);
+  accountBalance += amount;
+  $('#balance').text(dollarAmount(accountBalance));
+  $transaction.remove();
+}
 
 
 function dollarAmount(amount) {

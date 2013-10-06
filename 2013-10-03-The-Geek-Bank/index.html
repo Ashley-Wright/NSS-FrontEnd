@@ -7,20 +7,29 @@
     <link href='css/style.css' rel='stylesheet'>
   </head>
   <body>
-    <div id='main'>
-      <h1>The Geek Bank</h1>
-      <h2>Logo</h2>
+    <h1>The Geek Bank</h1>
+    <section>
       <img id='logo' src='#'>
-      <input id='logo_url' placeholder='Enter url for a logo' type='text'>
-      <input id='logo_button' type='button' value='Set Logo'>
+      <div id='logo_controls'>
+        <input id='logo_url' placeholder='Enter url for a logo' type='text'>
+        <input id='logo_button' type='button' value='Set Logo'>
+      </div>
+    </section>
+    <section>
       <h2>Balance</h2>
       <div id='balance'>$0.00</div>
-      <input id='enter_balance' placeholder='Enter Balance' type='text'>
-      <input id='balance_button' type='button' value='Set Balance'>
+      <div id='balance_controls'>
+        <input id='enter_balance' placeholder='Enter Balance' type='text'>
+        <input id='balance_button' type='button' value='Set Balance'>
+      </div>
+    </section>
+    <section>
       <h3>Deposits and Withdraws</h3>
       <input id='amount' placeholder='Enter amount' type='text'>
       <input id='deposit' type='button' value='Deposit'>
       <input id='withdraw' type='button' value='Withdraw'>
+    </section>
+    <section>
       <h2>Transactions List</h2>
       <div id='deposit_list'>
         <h4>Deposits</h4>
@@ -30,8 +39,7 @@
         <h4>Withdraws</h4>
         <ul></ul>
       </div>
-    </div>
-    <div class='clear'></div>
+    </section>
     <script src='js/jquery-1.10.2.min.js'></script>
     <script src='js/underscore-min.js'></script>
     <script src='js/main.js'></script>
