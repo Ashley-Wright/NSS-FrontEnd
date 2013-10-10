@@ -1,9 +1,16 @@
 'use strict';
 
+// Database Schema
 var Δdb;
 var Δitems;
-var items = [];
-var sum = 0;
+var Δperson;
+
+// Local Schema
+var db = {};
+db.person = {};
+db.items = [];
+db.statistics = {};
+db.statistics.grandTotal = 0;
 
 $(document).ready(initialize);
 
@@ -14,44 +21,41 @@ function initialize(){
 
   Δdb = new Firebase('https://ashley-inventory-2.firebaseio.com/');
   Δitems = Δdb.child('items');
-  Δdb.once('value', receiveDb);
-  Δitems.on('child_added', childAdded);
+  Δperson = Δdb.child('person');
+  Δperson.on('value', personChanged);
+  Δitems.on('child_added', itemAdded);
 }
 
-function childAdded(snapshot){
+function itemAdded(snapshot){
   var item = snapshot.val();
-  items.push(item);
   createRow(item);
 
-  sum += parseInt(item.count, 10) * parseInt(item.value, 10);
-  $('#sum').text(dollarAmount(sum));
+  db.statistics.grandTotal += parseInt(item.count, 10) * parseInt(item.value, 10);
+  $('#sum').text(dollarAmount(db.statistics.grandTotal));
+
+  db.items.push(item);
 }
 
-function receiveDb(snapshot){
-  var inventory = snapshot.val();
-  $('#person').val(inventory.fullName);
-  $('#address').val(inventory.address);
+function personChanged(snapshot){
+  var person = snapshot.val();
 
-//   for(var property in inventory.items){
-//     var item = inventory.items[property];
-//     items.push(item);
-//   }
-
-//   var $header = $('#items tr:first-child').detach();
-//   $('#items').empty().append($header);
-//   for(var i = 0; i < items.length; i++){
-//     createRow(items[i]);
-//   }
+  try{
+    $('#person').val(person.fullName);
+    $('#address').val(person.address);
+    db.person = person;
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 function save(){
   var fullName = $('#person').val();
   var address = $('#address').val();
-  var inventory = {};
-  inventory.fullName = fullName;
-  inventory.address = address;
+  var person = {};
+  person.fullName = fullName;
+  person.address = address;
 
-  Δdb.update(inventory);
+  Δperson.set(person);
 }
 
 function add(){

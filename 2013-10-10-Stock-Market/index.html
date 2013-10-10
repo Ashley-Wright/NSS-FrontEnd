@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset='utf-8'>
+  <meta content='width=device-width' name='viewport'>
+  <title>Foundation 4</title>
+  <link href='css/normalize.css' rel='stylesheet'>
+  <link href='css/foundation.css' rel='stylesheet'>
+  <link href='css/app.css' rel='stylesheet'>
+  <script src='js/vendor/custom.modernizr.js'></script>
+</head>
+<body>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h1>Stock Market Quote Updater</h1>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
+      <input autofocus id='setFunds' placeholder='Set Funds' type='text'>
+    </div>
+    <div class='small-10 columns'>
+      <input class='button success small' id='setButton' type='button' value='SET'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
+      <input id='symbol' placeholder='Symbol' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input id='quantity' placeholder='Quantity' type='text'>
+    </div>
+    <div class='small-8 columns'>
+      <input class='button success small' id='buyButton' type='button' value='BUY'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
+      <h5>Balance:</h5>
+    </div>
+    <div class='small-10 columns'>
+      <h5 id='balance'></h5>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-9 columns'>
+      <h4>Stock List</h4>
+    </div>
+    <div class='small-2 columns'>
+      <input id='interval' placeholder='Set Interval' type='text'>
+    </div>
+    <div class='small-1 columns'>
+      <input class='button success small' id='intervalButton' type='button' value='SET'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <table id='items'>
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Purchased Price</th>
+          <th>Current Value</th>
+          <th>Quanity</th>
+          <th>Total</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src='js/vendor/jquery-1.10.2.js'></script>
+  <script src='js/vendor/foundation.min.js'></script>
+  <script src='js/vendor/underscore.js'></script>
+  <script src='js/vendor/moment.min.js'></script>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <script src='js/app/app.js'></script>
+</body>
