@@ -15,26 +15,33 @@
       %h1 Inventory System
   .row
     .small-2.columns
-      %input#person{type:'text', placeholder:'Full Name'}
+      %input#person{type: 'text', placeholder: 'Full Name'}
     .small-8.columns
-      %input#address{type:'text', placeholder:'Address'}
+      %input#address{type: 'text', placeholder: 'Address'}
     .small-2.columns
-      %input#save.button.small.radius{type:'button', value:'Save'}
+      %input#save.button.small.radius{type: 'button', value: 'Save'}
+
   .row
     .small-2.columns
-      %input#name{type:'text', autofocus:true, placeholder:'Item Name'}
+      %input#name{type: 'text', autofocus: true, placeholder: 'Item Name'}
     .small-1.columns
-      %input#count{type:'text', placeholder:'#'}
+      %input#count{type: 'text', placeholder: 'Count'}
     .small-1.columns
-      %input#cost{type:'text', placeholder:'Cost'}
+      %input#value{type: 'text', placeholder: 'Cost'}
     .small-2.columns
-      %input#room{type:'text', placeholder:'Which Room'}
+      %input#room{type: 'text', placeholder: 'Which Room'}
     .small-2.columns
-      %input#condition{type:'text', placeholder:'Item Condition'}
+      %input#condition{type: 'text', placeholder: 'Item Condition'}
     .small-2.columns
-      %input#date{type:'text', placeholder:'Purchase Date'}
+      %input#date{type: 'text', placeholder: 'Purchase Date'}
     .small-2.columns
-      %input#add.button.small.success.radius{type:'button', value:'Add Item'}
+      %input#add.button.small.success.radius{type: 'button', value: 'Add Item'}
+  .row
+    .small-2.columns
+      %p Grand Total
+    .small-2.columns
+      %p#sum
+    .small-8.columns
   .row
     .small-12.columns
       %table#items
