@@ -23,6 +23,32 @@ function initialize(){
   Δbalance = Δdb.child('balance');
   Δstocks = Δdb.child('stocks');
   Δquotes = Δdb.child('quotes');
+
+  Δstocks.once('value', addStocks);
+  Δstocks.on('child_added', addStocks);
+}
+
+function addStocks(snapshot){
+  var stocks = snapshot.val();
+  console.log(stocks);
+  var stock = [];
+  for (stock in stocks)
+  {
+    var row = '<tr><td class="name"></td><td class="symbol"></td><td class="purchasedPrice"></td><td class="currentPrice"></td><td class="quantity"></td><td class="total"></td></tr>';
+    var $row = $(row);
+
+    var name = stocks[stock].name;
+    var symbol = stocks[stock].symbol;
+    var purchasedPrice = stocks[stock].purchasedPrice;
+    var quantity = stocks[stock].quantity;
+
+    $row.children('.name').text(name);
+    $row.children('.symbol').text(symbol.toUpperCase());
+    $row.children('.purchasedPrice').text(dollarAmount(purchasedPrice));
+    $row.children('.quantity').text(quantity);
+
+    $('#stocks').append($row);
+  }
 }
 
 function setFunds() {
@@ -30,6 +56,7 @@ function setFunds() {
   balance = parseFloat(balance);
 
   Δbalance.set(balance);
+  $('#balance').text(dollarAmount(balance));
 }
 
 function purchase(){
@@ -43,8 +70,13 @@ function purchase(){
 
     var stock = {};
     stock.symbol = symbol;
+    stock.name = quote.Name;
+    stock.purchasedPrice = quote.LastPrice;
     stock.quantity = quantity;
     Δstocks.push(stock);
+
+    db.balance -= stock.purchasedPrice * quantity;
+    $('#balance').text(dollarAmount(db.balance));
 
     $('#symbol').val('');
     $('#quantity').val('');
@@ -56,7 +88,9 @@ function requestQuote(symbol, fn){
   $.getJSON('http://dev.markitondemand.com/Api/Quote/jsonp?callback=?', data, fn);
 }
 
-
+function dollarAmount(number){
+  return '$' + number;
+}
 
 
 
