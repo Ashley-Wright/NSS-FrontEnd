@@ -24,36 +24,53 @@ function initialize(){
   Δstocks = Δdb.child('stocks');
   Δquotes = Δdb.child('quotes');
 
-  Δstocks.once('value', addStocks);
-  Δstocks.on('child_added', addStocks);
+  Δbalance.on('value', changeValue);
+  Δstocks.on('child_added', addStock);
 }
 
-function addStocks(snapshot){
-  var stocks = snapshot.val();
-  console.log(stocks);
-  var stock = [];
-  for (stock in stocks)
-  {
-    var row = '<tr><td class="name"></td><td class="symbol"></td><td class="purchasedPrice"></td><td class="currentPrice"></td><td class="quantity"></td><td class="total"></td></tr>';
-    var $row = $(row);
+function changeValue(snapshot){
+  var balance = snapshot.val();
+  db.balance = balance;
+  $('#balance').text(balance);
+}
 
-    var name = stocks[stock].name;
-    var symbol = stocks[stock].symbol;
-    var purchasedPrice = stocks[stock].purchasedPrice;
-    var quantity = stocks[stock].quantity;
+function addStock(snapshot){
+  var stock = snapshot.val();
+  var symbol = stock.symbol;
 
-    $row.children('.name').text(name);
-    $row.children('.symbol').text(symbol.toUpperCase());
-    $row.children('.purchasedPrice').text(dollarAmount(purchasedPrice));
-    $row.children('.quantity').text(quantity);
+  requestQuote(symbol, function(data, textStatus, jqXHR){
+    var quote = data.Data;
 
-    $('#stocks').append($row);
-  }
+    stock.currentPrice = quote.LastPrice;
+    createRow(stock);
+  });
+}
+
+function createRow(stock) {
+  var row = '<tr><td class="name"></td><td class="symbol"></td><td class="purchasedPrice"></td><td class="currentPrice"></td><td class="quantity"></td><td class="total"></td></tr>';
+  var $row = $(row);
+  console.log(stock);
+
+  var name = stock.name;
+  var symbol = stock.symbol;
+  var purchasedPrice = stock.purchasedPrice;
+  var currentPrice = stock.currentPrice;
+  var quantity = stock.quantity;
+  var total = stock.currentPrice * stock.quantity;
+
+  $row.children('.name').text(name);
+  $row.children('.symbol').text(symbol);
+  $row.children('.purchasedPrice').text(purchasedPrice);
+  $row.children('.currentPrice').text(currentPrice);
+  $row.children('.quantity').text(quantity);
+  $row.children('.total').text(total);
+
+  $('#stocks').append($row);
 }
 
 function setFunds() {
   var balance = $('#setFunds').val();
-  balance = parseFloat(balance);
+  db.balance = parseFloat(balance);
 
   Δbalance.set(balance);
   $('#balance').text(dollarAmount(balance));
@@ -77,6 +94,7 @@ function purchase(){
 
     db.balance -= stock.purchasedPrice * quantity;
     $('#balance').text(dollarAmount(db.balance));
+    Δbalance.set(db.balance);
 
     $('#symbol').val('');
     $('#quantity').val('');
