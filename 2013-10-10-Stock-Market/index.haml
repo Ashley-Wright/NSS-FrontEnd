@@ -14,6 +14,13 @@
     .small-12.columns
       %h1 Stock Market Quote Updater
   .row
+    .small-2.small-offset-6.columns
+      %h5 Cash
+    .small-2.columns
+      %h5 Stocks
+    .small-2.columns
+      %h5 Total
+  .row
     .small-2.columns
       %input#setFunds{type:'text', autofocus:true, placeholder:'Set Funds'}
     .small-4.columns
@@ -31,11 +38,6 @@
       %input#quantity{type:'text', placeholder:'Quantity'}
     .small-8.columns
       %input#buyButton.button.success.small{type:'button', value:'BUY'}
-  .row
-    .small-2.columns
-      %h5 Balance:
-    .small-10.columns
-      %h5#balance
   .row
     .small-9.columns
       %h4 Stock List
