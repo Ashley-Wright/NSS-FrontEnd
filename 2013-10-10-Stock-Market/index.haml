@@ -16,8 +16,14 @@
   .row
     .small-2.columns
       %input#setFunds{type:'text', autofocus:true, placeholder:'Set Funds'}
-    .small-10.columns
+    .small-4.columns
       %input#setButton.button.success.small{type:'button', value:'SET'}
+    .small-2.columns
+      %input#cash{type:'text', readonly: true}
+    .small-2.columns
+      %input#stock{type:'text', readonly: true}
+    .small-2.columns
+      %input#total{type:'text', readonly: true}
   .row
     .small-2.columns
       %input#symbol{type:'text', placeholder:'Symbol'}

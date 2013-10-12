@@ -8,7 +8,11 @@ var Δquotes;
 
 // Local Schema
 var db = {};
-db.balance = 0;
+db.balance = [];
+db.balance.cash = 0;
+db.balance.bought = 0;
+db.balance.stocks = 0;
+// db.balance.total = 0;
 db.stocks = [];
 db.quotes = [];
 
@@ -30,8 +34,12 @@ function initialize(){
 
 function changeValue(snapshot){
   var balance = snapshot.val();
-  db.balance = balance;
-  $('#balance').text(balance);
+  if(balance)
+  {
+    db.balance = balance;
+    // db.balance.total = db.balance.cash - db.balance.bought + db.balance.stocks;
+    $('#balance').text(dollarAmount(db.balance.total));
+  }
 }
 
 function addStock(snapshot){
@@ -65,15 +73,21 @@ function createRow(stock) {
   $row.children('.quantity').text(quantity);
   $row.children('.total').text(total);
 
+  db.balance.stocks += total;
+  Δbalance.set(db.balance);
+  console.log(db.balance);
+
   $('#stocks').append($row);
 }
 
 function setFunds() {
   var balance = $('#setFunds').val();
-  db.balance = parseFloat(balance);
+  db.balance.cash = parseFloat(balance);
+  db.balance.total = db.balance.cash - db.balance.bought + db.balance.stocks;
 
-  Δbalance.set(balance);
-  $('#balance').text(dollarAmount(balance));
+  $('#balance').text(dollarAmount(db.balance.total));
+  Δbalance.set(db.balance);
+
 }
 
 function purchase(){
@@ -92,8 +106,8 @@ function purchase(){
     stock.quantity = quantity;
     Δstocks.push(stock);
 
-    db.balance -= stock.purchasedPrice * quantity;
-    $('#balance').text(dollarAmount(db.balance));
+    db.balance.bought += stock.purchasedPrice * quantity;
+    db.balance.total = db.balance.cash - db.balance.bought + db.balance.stocks;
     Δbalance.set(db.balance);
 
     $('#symbol').val('');
@@ -107,30 +121,5 @@ function requestQuote(symbol, fn){
 }
 
 function dollarAmount(number){
-  return '$' + number;
+  return '$' + number.toFixed(2);
 }
-
-
-
-
-// function buyStock(){
-//   var symbol = $('#symbol').val();
-//   var quantity = $('#quantity').val();
-//   quantity = parseInt(quantity, 10);
-//   var stock = {};
-//   stock.symbol = symbol;
-//   stock.quantity = quantity;
-//   Δstocks.push(stock);
-//   getStockQuote();
-// }
-
-// function receivedQuote(data, textStatus, jqXHR){
-//   var rowInfo = {};
-//   console.log(data);
-//   rowInfo.name = data.name;
-//   debugger;
-// }
-
-
-
-
