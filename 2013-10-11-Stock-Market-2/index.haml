@@ -1,0 +1,42 @@
+!!! 5
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+%head
+  %meta{charset: "utf-8"}
+  %meta{name: "viewport", content: "width=device-width"}
+  %title Foundation 4
+  %link{rel: "stylesheet", href: "css/normalize.css"}
+  %link{rel: "stylesheet", href: "css/foundation.css"}
+  %link{rel: "stylesheet", href: "css/app.css"}
+  %script{src: "js/vendor/custom.modernizr.js"}
+%body
+  .row
+    .small-12.columns
+      %h1 Stock Market
+  .row
+    .small-2.columns
+      %input#funds{type:'text', placeholder:'Set Funds'}
+    .small-2.columns
+      %input#setButton.button.small{type:'button', value:'SET'}
+    .small-8.columns
+  .row
+    .small-2.columns
+      %input#symbol{type:'text', placeholder:'Symbol'}
+    .small-2.columns
+      %input#quantity{type:'text', placeholder:'Quantity'}
+    .small-2.columns
+      %input#buyButton.button.small{type:'button', value:'BUY'}
+    .small-2.small-offset-2.columns
+      %input#delay{type:'text', placeholder:'Delay'}
+    .small-2.columns
+      %input#refreshButton.button.small{type:'button', value:'Refresh'}
+  .row
+    .small-12.columns
+      #graph
+
+  %script{src: 'js/vendor/jquery-1.10.2.js'}
+  %script{src: 'js/vendor/foundation.min.js'}
+  %script{src: 'js/vendor/underscore.js'}
+  %script{src: 'js/vendor/moment.min.js'}
+  %script{src: 'https://cdn.firebase.com/v0/firebase.js'}
+  %script{src: 'js/app/app.js'}
