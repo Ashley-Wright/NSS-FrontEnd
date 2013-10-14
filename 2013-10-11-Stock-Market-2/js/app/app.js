@@ -76,11 +76,46 @@ function requestQuote(symbol, fn){
 function stockAdded(stock){
   stock = stock.val();
   db.stocks.push(stock);
-  console.log(db.stocks);
 
-  // makeBarGraph();
+  makeBarGraph();
 }
 
-// function makeBarGraph(){
-//   _.max(db.stocks)
-// }
+function makeBarGraph(){
+  var highestPriceStock = _.max(db.stocks, function(stock){return stock.price;});
+  var highestPrice = highestPriceStock.price;
+  var base = 400;
+  $('#graph').empty();
+
+  for(var stock in db.stocks)
+  {
+    var $wrap = $('<div>');
+    $wrap.addClass('wrapper');
+
+    var $noColor = $('<div>');
+    var $color = $('<div>');
+    var cls = db.stocks[stock].symbol;
+    $wrap.addClass(cls);
+    $color.addClass('bar');
+
+    var height = (db.stocks[stock].price / highestPrice) * base;
+    var empty = base - height;
+    console.log(height);
+
+    $color.css('height', height + 'px');
+    $noColor.css('height', empty + 'px');
+
+    var $button = $('<input>');
+    $button.attr('type', 'button').attr('value', 'Sell');
+    $button.addClass('button');
+    $button.addClass('small');
+
+    var $img = $('<img>');
+    $img.attr('src', '#');
+
+    $wrap.append($noColor);
+    $wrap.append($color);
+    $wrap.append($img);
+    $wrap.append($button);
+    $('#graph').append($wrap);
+  }
+}

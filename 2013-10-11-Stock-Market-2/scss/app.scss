@@ -5,4 +5,28 @@
   height: 500px;
   background-color: lightgrey;
   margin-bottom: 50px;
+  position: relative;
+
+  .wrapper
+  {
+    height: 500px;
+    // margin: 0;
+    width: 55px;
+    margin: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: baseline;
+
+    .bar
+    {
+      background-color: green;
+    }
+
+    img
+    {
+      height: 50px;
+      width: 55px;
+    }
+  }
 }
+
