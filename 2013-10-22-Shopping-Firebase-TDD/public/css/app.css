@@ -1,0 +1,6 @@
+html, body {
+  width: 100%; }
+  html table, body table {
+    width: 100%; }
+    html table td, body table td {
+      text-align: center; }

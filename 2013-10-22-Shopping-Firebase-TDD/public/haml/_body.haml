@@ -1,0 +1,29 @@
+.row
+  .small-12.columns
+    %h2 Shopping Site
+.row
+  .small-2.columns
+    %input#product-image{type:'text', placeholder:'Product Image'}
+  .small-2.columns
+    %input#product-name{type:'text', placeholder:'Product Name'}
+  .small-2.columns
+    %input#product-weight{type:'text', placeholder:'Product Weight'}
+  .small-2.columns
+    %input#product-price{type:'text', placeholder:'Retail Price'}
+  .small-2.columns
+    %input#product-off{type:'text', placeholder:'Percent Off'}
+  .small-2.columns
+    %input#add-product.button.small{type:'button', value:'Add Product'}
+.row
+  .small-12.columns
+    %h4 Products
+.row
+  .small-12.columns
+    %table#products
+      %tr
+        %th Image
+        %th Name
+        %th Weight
+        %th Retail Price
+        %th Percent Off
+        %th Sale Price
