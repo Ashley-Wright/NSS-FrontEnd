@@ -104,7 +104,7 @@ function htmlUpdateProduct(product){
   $price.addClass('product-price');
 
   var $off = $('<td>');
-  $off.text(product.off);
+  $off.text(product.off + '%');
   $off.addClass('product-off');
 
   var $sale = $('<td>');
