@@ -12,6 +12,9 @@ db.pagination.perPage = 5;
 db.pagination.currentPage = 1;
 db.pagination.currentRowCount = 0;
 db.customers = [];
+db.cart = {};
+db.cart.products = [];
+db.cart.totals = {};
 
 $(document).ready(initialize);
 
@@ -39,6 +42,8 @@ function turnHandlersOn(){
   $('#next').on('click', clickNavigation);
   $('#previous').on('click', clickNavigation);
   $('#add-customer').on('click', clickAddCustomer);
+  $('#select-customer').on('change', changeCustomer);
+  $('#products').on('click', 'img', clickAddProductToCart);
 }
 
 function turnHandlersOff(){
@@ -46,6 +51,8 @@ function turnHandlersOff(){
   $('#next').off('click');
   $('#previous').off('click');
   $('#add-customer').off('click');
+  $('#select-customer').off('change');
+  $('#products').off('click');
 }
 
 // -------------------------------------------------------------------- //
@@ -98,6 +105,27 @@ function clickAddCustomer(){
   $('#customer-name').val('');
 }
 
+function changeCustomer(){
+  var name = this.value;
+  var customer = _.find(db.customers, function(customer){return customer.name === name;});
+  db.cart.customer = customer;
+}
+
+function clickAddProductToCart(){
+  var image = $(this).attr('scr');
+  image = image.slice(5);
+  var product = _.find(db.products, function(product){return product.image === image;});
+  // debugger;
+  db.cart.products.push(product);
+}
+
+
+// function clickAddToCart(){
+//   var customerName = $('select#select-customer').val();
+//   var customer = _.find(db.customers, function(customer){return customer.name === customerName;});
+//   db.cart.customer = customer;
+//   // var product = _.find(db.products, function(product){return product.})
+// }
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
