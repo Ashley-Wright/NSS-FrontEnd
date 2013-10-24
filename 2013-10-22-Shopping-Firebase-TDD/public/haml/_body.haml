@@ -27,3 +27,39 @@
         %th Retail Price
         %th Percent Off
         %th Sale Price
+.row
+  .small-12.columns
+    %input#previous.button.small.hidden{type:'button', value:'Previous'}
+    %input#next.button.small.hidden{type:'button', value:'Next'}
+.row
+  .small-12.columns
+    %h4 Customers
+.row
+  .small-2.columns
+    %input#customer-image{type:'text', placeholder:'Customer Image'}
+  .small-2.columns
+    %input#customer-name{type:'text', placeholder:'Customer Name'}
+  .small-2.columns
+    %input#domestic{type: 'radio', name: 'address', value:'domestic'} Domestic
+  .small-2.columns
+    %input#international{type: 'radio', name: 'address', value:'international'} International
+  .small-4.columns
+    %input#add-customer.button.small{type:'button', value:'Add Customer'}
+.row
+  .small-12.columns
+    %h4 Orders
+.row
+  .small-2.columns
+    %select#select-customer
+  .small-10.columns
+    %table#cart
+      %tr
+        %th Name
+        %th Count
+        %th Amount
+        %th Weight
+        %th Shipping
+        %th Total
+.row
+  .small-12.columns
+    %input#purchase.button.small{type:'button', value:'Purchase'}

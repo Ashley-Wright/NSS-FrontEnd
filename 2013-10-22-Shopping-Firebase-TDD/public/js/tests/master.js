@@ -9,6 +9,8 @@ function setupTest(){
   db.products = [];
   db.customers = [];
   db.orders = [];
+  db.pagination.currentPage = 1;
+  db.pagination.currentRowCount = 0;
   // Clean Out Test Database Here
   Δdb.remove();
 }
@@ -94,6 +96,63 @@ function createTestProduct(name, image, weight, price, off){
   $('#product-off').val(off);
   $('#add-product').trigger('click');
 }
+
+function createTestCustomer(name, image, isDomestic){
+  $('#customer-image').val(image);
+  $('#customer-name').val(name);
+
+  if(isDomestic){
+    $('#domestic')[0].checked = true;
+  } else {
+    $('#international')[0].checked = true;
+  }
+
+  $('#add-customer').trigger('click');
+}
+
+
+test('Add Customer', function(){
+  expect(7);
+
+  $('#customer-image').val('bob.png');
+  $('#customer-name').val('Bob Jenkins');
+  $('#domestic')[0].checked = true;
+  $('#add-customer').trigger('click');
+
+  equal(db.customers.length, 1, 'should have 1 costumer in array');
+  ok(db.customers[0] instanceof Customer, 'should be an instance of Customer');
+  equal(db.customers[0].name, 'Bob Jenkins', 'name should be present');
+  equal(db.customers[0].image, 'bob.png', 'image should be present');
+  ok(db.customers[0].id, 'id should be present');
+  ok(db.customers[0].isDomestic, 'should be domestic');
+
+  ok(!$('#domestic')[0].checked, 'domestic should not be checked');
+});
+
+test('Customer Dropdown and Shopping Cart', function(){
+  expect(7);
+
+  for (var i = 0; i < 5; i++) {
+    var name = Math.random().toString(36).substring(2);
+    var image = Math.random().toString(36).substring(2) + '.png';
+    var isDomestic = _.shuffle([true, false])[0];
+
+    createTestCustomer(name, image, isDomestic);
+  }
+
+  createTestCustomer('Bob', 'bob.png', true);
+
+  // table: name, count, amount, weight, shipping, total
+
+  equal(db.customers.length, 6, 'should have 6 customers');
+  equal($('select#select-customer option').length, 6, 'should have 6 options in select');
+  equal($('select#select-customer option:nth-child(1)').val(), 'Bob', 'bob value should be on top of the list');
+  equal($('select#select-customer option:nth-child(1)').text(), 'Bob', 'bob text should be on top of the list');
+  ok($('table#cart').length, 'shopping cart should be visable');
+  equal($('table#cart th').length, 6, 'should be 6 columns');
+  ok($('#purchase').length, 'purchase button should be visable');
+});
+
 
 
 // asyncTest('<name-of-feature>', function(){
