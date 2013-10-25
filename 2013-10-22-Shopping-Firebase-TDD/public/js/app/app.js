@@ -13,6 +13,7 @@ db.pagination.currentPage = 1;
 db.pagination.currentRowCount = 0;
 db.customers = [];
 db.cart = {};
+db.cart.customer = [];
 db.cart.products = [];
 db.cart.totals = {};
 
@@ -115,17 +116,10 @@ function clickAddProductToCart(){
   var image = $(this).attr('scr');
   image = image.slice(5);
   var product = _.find(db.products, function(product){return product.image === image;});
-  // debugger;
   db.cart.products.push(product);
+  calculateTotals();
+  htmlUpdateShoppingCart();
 }
-
-
-// function clickAddToCart(){
-//   var customerName = $('select#select-customer').val();
-//   var customer = _.find(db.customers, function(customer){return customer.name === customerName;});
-//   db.cart.customer = customer;
-//   // var product = _.find(db.products, function(product){return product.})
-// }
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
@@ -233,6 +227,85 @@ function htmlAddCustomerToSelect(customer){
   $option.text(customer.name);
   $('select#select-customer').prepend($option);
 }
+
+function htmlUpdateShoppingCart(){
+  var products = _.uniq(db.cart.products);
+  $('#cart tbody').empty();
+  $('#cart tfoot').empty();
+
+  for(var i = 0; i < products.length; i++){
+    var $tr = $('<tr>');
+    var $name = $('<td>');
+    $name.addClass('product-name');
+    $name.text(products[i].name);
+
+    var $count = $('<td>');
+    // for(j = 0; j < db.cart.products; j++){
+    //   var isSame = db.cart.products[j] === products[i]
+    //   var count = (db.cart.products[j] = products[i] ?
+    // }
+
+    // var map = 0;
+    // map = $.map(db.cart.products, function(product){return product.name === products[i].name;})
+    // var count = map.length;
+    // console.log(count);
+
+    // var count = _.filter(db.cart.products, function(product){return product === products[i];});
+    // console.log(count);
+    // debugger;
+    $count.addClass('product-count');
+    // $count.text(count);
+
+    var $amount = $('<td>');
+    $amount.addClass('product-amount');
+    $amount.text(products[i].salePrice());
+
+    var $weight = $('<td>');
+    $weight.addClass('product-weight');
+    $weight.text(products[i].weight);
+
+    var $shipping = $('<td>');
+    $shipping.addClass('product-shipping');
+    var perPound = db.cart.customer.isDomestic ? 0.50 : 1.50;
+    var shipping = products[i].weight * perPound;
+    $shipping.text(shipping);
+
+    var $total = $('<td>');
+    $total.addClass('product-total');
+    var grand = shipping * products[i].salePrice();
+    $total.text(grand);
+
+    $tr.append($name, $count, $amount, $weight, $shipping, $total);
+    $('#cart tbody').append($tr);
+  }
+
+  var $footer = $('<tr>');
+  $('#cart tfoot').append($footer);
+}
+
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+
+function calculateTotals(){
+  db.cart.totals.count = db.cart.products.length;
+  db.cart.totals.amount = _.reduce(db.cart.products, function(memo, product){return memo + product.salePrice();}, 0);
+  db.cart.totals.weight = _.reduce(db.cart.products, function(memo, product){return memo + product.weight;}, 0);
+
+  if(db.cart.customer.length === 0){
+    var name = $('#select-customer').val();
+    var customer = _.find(db.customers, function(customer){return customer.name === name;});
+    db.cart.customer = customer;
+  }
+
+  var perPound = db.cart.customer.isDomestic ? 0.50 : 1.50;
+  db.cart.totals.shipping = db.cart.totals.weight * perPound;
+  db.cart.totals.grand = db.cart.totals.amount + db.cart.totals.shipping;
+}
+
+
+
+
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //

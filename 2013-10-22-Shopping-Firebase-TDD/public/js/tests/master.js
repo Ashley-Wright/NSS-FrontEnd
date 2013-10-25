@@ -192,7 +192,7 @@ test('Add Items to Shopping Cart', function(){
   equal(db.cart.totals.grand, 950.25, 'amount total should be 950.25');
 
   equal($('#cart thead tr').length, 1, 'should be a header');
-  equal($('#cart tbody tr').length, 3, 'should be 5 rows in cart');
+  equal($('#cart tbody tr').length, 3, 'should be 3 rows in cart');
   equal($('#cart tfoot tr').length, 1, 'should be a footer');
 
   equal($('#cart tbody tr:nth-child(1) .product-name').text(), 'iPhone 5s', 'name should be iphone 5s');
