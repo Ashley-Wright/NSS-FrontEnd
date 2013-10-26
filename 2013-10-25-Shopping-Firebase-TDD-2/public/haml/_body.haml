@@ -1,0 +1,78 @@
+.row
+  .small-2.columns
+    %input#product-image{type: 'text', placeholder: 'image.png'}
+  .small-2.columns
+    %input#product-name{type: 'text', placeholder: 'name'}
+  .small-2.columns
+    %input#product-weight{type: 'text', placeholder: 'weight'}
+  .small-2.columns
+    %input#product-price{type: 'text', placeholder: '$3.30'}
+  .small-2.columns
+    %input#product-off{type: 'text', placeholder: '14%'}
+  .small-2.columns
+    %input#add-product.small.radius.button{type: 'button', value: 'Add Product'}
+.row
+  .small-12.columns
+    %table#products
+      %tr
+        %th Image
+        %th Name
+        %th Weight
+        %th Price
+        %th % Off
+        %th Sale
+.row
+  .small-2.columns
+    #previous.hidden.button.tiny.alert.expand Previous
+  .small-2.columns
+    #next.hidden.button.tiny.success.expand Next
+  .small-8.columns
+.row
+  .small-2.columns
+    %input#customer-image{type: 'text', placeholder: 'image.png'}
+  .small-2.columns
+    %input#customer-name{type: 'text', placeholder: 'name'}
+  .small-6.columns
+    %input#domestic{type: 'radio', name: 'address', value: 'domestic'} Domestic
+    %input#international{type: 'radio', name: 'address', value: 'international'} International
+  .small-2.columns
+    %input#add-customer.small.radius.button{type: 'button', value: 'Add Customer'}
+.row
+  .small-2.columns
+    %select#select-customer
+      %option Select Customer
+  .small-10.columns
+    %table#cart
+      %thead
+        %tr
+          %th Name
+          %th Count
+          %th Amount
+          %th Weight
+          %th Shipping
+          %th Total
+      %tbody
+      %tfoot
+        %tr
+          %td
+          %td#cart-count
+          %td#cart-amount
+          %td#cart-weight
+          %td#cart-shipping
+          %td#cart-grand
+.row
+  .small-12.columns
+    %input#purchase.small.radius.button{type: 'button', value: 'Purchase'}
+.row
+  .small-12.columns
+    %table#orders
+      %thead
+        %th ID
+        %th Time
+        %th Customer
+        %th Products
+        %th Total
+        %th Shipping
+        %th Grand
+      %tbody
+      %tfoot

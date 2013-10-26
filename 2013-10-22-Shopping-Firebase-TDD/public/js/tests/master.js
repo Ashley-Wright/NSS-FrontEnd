@@ -198,11 +198,11 @@ test('Add Items to Shopping Cart', function(){
   equal($('#cart tbody tr:nth-child(1) .product-name').text(), 'iPhone 5s', 'name should be iphone 5s');
   equal($('#cart tbody tr:nth-child(1) .product-count').text(), '2', 'count should be 2 (iphone 5s)');
 
-  equal($('#cart tfoot tr #cart-count').text(), '4', 'should have 4 items in cart');
-  equal($('#cart tfoot tr #cart-amount').text(), '$945.00', 'should have $945.00 in amount');
-  equal($('#cart tfoot tr #cart-weight').text(), '3.5 lbs', 'should have 3.5 lbs in weight');
-  equal($('#cart tfoot tr #cart-shipping').text(), '$5.25', 'should have $5.25 in shipping');
-  equal($('#cart tfoot tr #cart-grand').text(), '$950.25', 'should have $950.25 in grand totals');
+  equal($('#cart tfoot tr .cart-count').text(), '4', 'should have 4 items in cart');
+  equal($('#cart tfoot tr .cart-amount').text(), '$945.00', 'should have $945.00 in amount');
+  equal($('#cart tfoot tr .cart-weight').text(), '3.5 lbs', 'should have 3.5 lbs in weight');
+  equal($('#cart tfoot tr .cart-shipping').text(), '$5.25', 'should have $5.25 in shipping');
+  equal($('#cart tfoot tr .cart-grand').text(), '$950.25', 'should have $950.25 in grand totals');
 });
 
 // asyncTest('<name-of-feature>', function(){

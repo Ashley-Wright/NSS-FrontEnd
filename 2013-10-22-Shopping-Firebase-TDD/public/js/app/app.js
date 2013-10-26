@@ -187,7 +187,7 @@ function htmlUpdateProduct(product){
   $name.addClass('product-name');
 
   var $weight = $('<td>');
-  $weight.text(product.weight.toFixed(1));
+  $weight.text(product.weight.toFixed(1) + ' lbs');
   $weight.addClass('product-weight');
 
   var $price = $('<td>');
@@ -231,7 +231,6 @@ function htmlAddCustomerToSelect(customer){
 function htmlUpdateShoppingCart(){
   var products = _.uniq(db.cart.products);
   $('#cart tbody').empty();
-  $('#cart tfoot').empty();
 
   for(var i = 0; i < products.length; i++){
     var $tr = $('<tr>');
@@ -258,28 +257,58 @@ function htmlUpdateShoppingCart(){
 
     var $amount = $('<td>');
     $amount.addClass('product-amount');
-    $amount.text(products[i].salePrice());
+    $amount.text(formatCurrency(products[i].salePrice()));
 
     var $weight = $('<td>');
     $weight.addClass('product-weight');
-    $weight.text(products[i].weight);
+    $weight.text(products[i].weight + ' lbs');
 
     var $shipping = $('<td>');
     $shipping.addClass('product-shipping');
     var perPound = db.cart.customer.isDomestic ? 0.50 : 1.50;
     var shipping = products[i].weight * perPound;
-    $shipping.text(shipping);
+    $shipping.text(formatCurrency(shipping));
 
     var $total = $('<td>');
     $total.addClass('product-total');
     var grand = shipping * products[i].salePrice();
-    $total.text(grand);
+    $total.text(formatCurrency(grand));
 
     $tr.append($name, $count, $amount, $weight, $shipping, $total);
     $('#cart tbody').append($tr);
   }
 
+  htmlUpdateFooter();
+}
+
+function htmlUpdateFooter(){
+  $('#cart tfoot').empty();
   var $footer = $('<tr>');
+
+  var $name = $('<td>');
+  $name.text('Grand Total');
+
+  var $count = $('<td>');
+  $count.addClass('cart-count');
+  $count.text(db.cart.totals.count);
+
+  var $amount = $('<td>');
+  $amount.addClass('cart-amount');
+  $amount.text(formatCurrency(db.cart.totals.amount));
+
+  var $weight = $('<td>');
+  $weight.addClass('cart-weight');
+  $weight.text(db.cart.totals.weight + ' lbs');
+
+  var $shipping = $('<td>');
+  $shipping.addClass('cart-shipping');
+  $shipping.text(formatCurrency(db.cart.totals.shipping));
+
+  var $grand = $('<td>');
+  $grand.addClass('cart-grand');
+  $grand.text(formatCurrency(db.cart.totals.grand));
+
+  $footer.append($name, $count, $amount, $weight, $shipping, $grand);
   $('#cart tfoot').append($footer);
 }
 
@@ -302,10 +331,6 @@ function calculateTotals(){
   db.cart.totals.shipping = db.cart.totals.weight * perPound;
   db.cart.totals.grand = db.cart.totals.amount + db.cart.totals.shipping;
 }
-
-
-
-
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
