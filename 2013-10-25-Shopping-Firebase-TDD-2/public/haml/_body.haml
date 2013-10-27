@@ -1,4 +1,10 @@
 .row
+  .small-12.columns
+    %h2 Shopping Site
+.row
+  .small-12.columns
+    %h4 Products
+.row
   .small-2.columns
     %input#product-image{type: 'text', placeholder: 'image.png'}
   .small-2.columns
@@ -22,11 +28,13 @@
         %th % Off
         %th Sale
 .row
-  .small-2.columns
-    #previous.hidden.button.tiny.alert.expand Previous
-  .small-2.columns
-    #next.hidden.button.tiny.success.expand Next
-  .small-8.columns
+  .small-1.columns
+    #previous.hidden.button.tiny.expand Previous
+  .small-1.small-offset-10.columns
+    #next.hidden.button.tiny.expand Next
+.row
+  .small-12.columns
+    %h4 Customers
 .row
   .small-2.columns
     %input#customer-image{type: 'text', placeholder: 'image.png'}
@@ -37,6 +45,9 @@
     %input#international{type: 'radio', name: 'address', value: 'international'} International
   .small-2.columns
     %input#add-customer.small.radius.button{type: 'button', value: 'Add Customer'}
+.row
+  .small-12.columns
+    %h4 Cart
 .row
   .small-2.columns
     %select#select-customer
@@ -62,7 +73,11 @@
           %td#cart-grand
 .row
   .small-12.columns
-    %input#purchase.small.radius.button{type: 'button', value: 'Purchase'}
+    %input#clear-cart.small.radius.button.alert{type: 'button', value: 'Clear'}
+    %input#purchase.small.radius.button.success{type: 'button', value: 'Purchase'}
+.row
+  .small-12.columns
+    %h4 Orders
 .row
   .small-12.columns
     %table#orders

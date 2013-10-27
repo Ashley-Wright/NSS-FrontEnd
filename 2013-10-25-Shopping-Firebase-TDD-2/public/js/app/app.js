@@ -63,6 +63,8 @@ function turnHandlersOn(){
   $('#products').on('click', 'img', clickAddItemToCart);
   $('#select-customer').on('change', changeCustomer);
   $('#purchase').on('click', clickAddOrder);
+  $('#cart').on('click', 'tr', clickRemoveItemFromCart);
+  $('#clear-cart').on('click', clickClearCart);
 }
 
 function turnHandlersOff(){
@@ -73,6 +75,8 @@ function turnHandlersOff(){
   $('#products').off('click');
   $('#select-customer').off('change');
   $('#purchase').off('click');
+  $('#cart').off('click');
+  $('#clear-cart').off('click');
 }
 
 // -------------------------------------------------------------------- //
@@ -147,6 +151,25 @@ function clickAddOrder(){
     htmlClearCart();
   }
 }
+
+function clickRemoveItemFromCart(){
+  var $tr = $(this);
+  var $name = $tr.children()[0];
+  var name = $($name).text();
+  var product = _.find(db.cart.products, function(p){return p.name === name;});
+  var index = db.cart.products.indexOf(product);
+  if (index > -1) {
+    db.cart.products.splice(index, 1);
+  }
+  $tr.remove();
+
+  htmlUpdateCartTotals();
+}
+
+function clickClearCart(){
+  $('#cart tbody').remove();
+}
+
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //

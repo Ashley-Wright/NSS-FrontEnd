@@ -13,6 +13,16 @@
 </head>
 <body>
   <div class='row'>
+    <div class='small-12 columns'>
+      <h2>Shopping Site</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h4>Products</h4>
+    </div>
+  </div>
+  <div class='row'>
     <div class='small-2 columns'>
       <input id='product-image' placeholder='image.png' type='text'>
     </div>
@@ -47,13 +57,17 @@
     </div>
   </div>
   <div class='row'>
-    <div class='small-2 columns'>
-      <div class='hidden button tiny alert expand' id='previous'>Previous</div>
+    <div class='small-1 columns'>
+      <div class='hidden button tiny expand' id='previous'>Previous</div>
     </div>
-    <div class='small-2 columns'>
-      <div class='hidden button tiny success expand' id='next'>Next</div>
+    <div class='small-1 small-offset-10 columns'>
+      <div class='hidden button tiny expand' id='next'>Next</div>
     </div>
-    <div class='small-8 columns'></div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h4>Customers</h4>
+    </div>
   </div>
   <div class='row'>
     <div class='small-2 columns'>
@@ -68,6 +82,11 @@
     </div>
     <div class='small-2 columns'>
       <input class='small radius button' id='add-customer' type='button' value='Add Customer'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h4>Cart</h4>
     </div>
   </div>
   <div class='row'>
@@ -104,7 +123,13 @@
   </div>
   <div class='row'>
     <div class='small-12 columns'>
-      <input class='small radius button' id='purchase' type='button' value='Purchase'>
+      <input class='small radius button alert' id='clear-cart' type='button' value='Clear'>
+      <input class='small radius button success' id='purchase' type='button' value='Purchase'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h4>Orders</h4>
     </div>
   </div>
   <div class='row'>

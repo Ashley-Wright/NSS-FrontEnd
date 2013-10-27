@@ -216,6 +216,67 @@ test(' Add order test', function(){
   equal($('#orders tbody .order-products-list li').length, 4, 'should have 4 items in order');
 });
 
+test('Remove Cart Items', function(){
+  expect(6);
+
+  createTestProduct('iPad Air', 'ipad-air.png', 1, 500, 10); // sale - 450
+  createTestProduct('iPhone 5s', 'iphone-5s.png', 0.5, 200, 0); // sale - 200
+  createTestProduct('Apple TV', 'apple-tv.png', 1.5, 100, 5); // sale - 95
+
+  createTestCustomer('Bob', 'bob.png', true);
+  createTestCustomer('Sally', 'sally.png', false);
+
+  $('select#select-customer').val('Sally');
+  $('select#select-customer').trigger('change');
+
+  // 2 iphone 5s
+  $('#products tr:nth-child(3) .product-image img').trigger('click');
+  $('#products tr:nth-child(3) .product-image img').trigger('click');
+
+  // 1 ipad air
+  $('#products tr:nth-child(2) .product-image img').trigger('click');
+
+  // 1 apple tv
+  $('#products tr:nth-child(4) .product-image img').trigger('click');
+
+  equal($('#cart tbody tr').length, 3, 'should be 3 items in body');
+  equal($('#cart tbody tr:nth-child(2) .product-name').text(), 'iPad Air', 'name should be iPad Air');
+  equal($('#cart tfoot tr #cart-count').text(), '4', 'should have 4 items in cart');
+
+  $('#cart tbody tr:nth-child(2)').trigger('click');
+
+  equal($('#cart tbody tr').length, 2, 'should be 2 items in body');
+  equal($('#cart tbody tr:nth-child(2) .product-name').text(), 'Apple TV', 'name should be Apple TV');
+  equal($('#cart tfoot tr #cart-count').text(), '3', 'should have 3 items in cart');
+});
+
+
+test('Clear Cart', function(){
+  expect(2);
+
+  createTestProduct('iPad Air', 'ipad-air.png', 1, 500, 10); // sale - 450
+  createTestProduct('iPhone 5s', 'iphone-5s.png', 0.5, 200, 0); // sale - 200
+  createTestProduct('Apple TV', 'apple-tv.png', 1.5, 100, 5); // sale - 95
+
+  createTestCustomer('Bob', 'bob.png', true);
+  createTestCustomer('Sally', 'sally.png', false);
+
+  $('select#select-customer').val('Sally');
+  $('select#select-customer').trigger('change');
+
+  // 2 iphone 5s
+  $('#products tr:nth-child(3) .product-image img').trigger('click');
+
+  // 1 ipad air
+  $('#products tr:nth-child(2) .product-image img').trigger('click');
+
+  // 1 apple tv
+  $('#products tr:nth-child(4) .product-image img').trigger('click');
+
+  equal($('#cart tbody tr').length, 3, 'should be 3 items in body');
+  $('#clear-cart').trigger('click');
+  equal($('#cart tbody tr').length, 0, 'should be 0 items in body');
+});
 
 
 function createTestProduct(name, image, weight, price, off){
