@@ -63,8 +63,9 @@ function turnHandlersOn(){
   $('#products').on('click', 'img', clickAddItemToCart);
   $('#select-customer').on('change', changeCustomer);
   $('#purchase').on('click', clickAddOrder);
-  $('#cart').on('click', 'tr', clickRemoveItemFromCart);
+  $('#cart').on('click', 'tbody tr', clickRemoveItemFromCart);
   $('#clear-cart').on('click', clickClearCart);
+  $('#cart').on('click', 'th', clickSortCart);
 }
 
 function turnHandlersOff(){
@@ -88,7 +89,7 @@ function clickAddProduct(){
   var name = getValue('#product-name');
   var weight = getValue('#product-weight', parseFloat);
   var price = getValue('#product-price', parseFloat);
-  var off = getValue('#product-off', parseFloat) / 100;
+  var off = getValue('#product-off', parseFloat);
 
   var product = new Product(image, name, weight, price, off);
   delete product.salePrice;
@@ -170,6 +171,13 @@ function clickClearCart(){
   $('#cart tbody').remove();
 }
 
+function clickSortCart(){
+  var catagory = $(this).text();
+  var sort = _.sortBy(db.cart.products, function(p){return p.name;});
+  $('#cart tbody').empty();
+  _.each(sort, htmlAddItemToCart);
+}
+
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
@@ -219,7 +227,7 @@ function dbOrderAdded(snapshot){
 
 function htmlAddProduct(product){
   db.pagination.currentRowCount++;
-  var tr = '<tr class="product"><td class="product-image"><img src="/img/' + product.image + '"></td><td class="product-name">' + product.name + '</td><td class="product-weight">' + product.weight.toFixed(2) + ' lbs</td><td class="product-price">' + formatCurrency(product.price) + '</td><td class="product-off">' + product.off.toFixed(2) + '</td><td class="product-sale">' + formatCurrency(product.salePrice()) + '</td></tr>';
+  var tr = '<tr class="product"><td class="product-image"><img src="/img/' + product.image + '"></td><td class="product-name">' + product.name + '</td><td class="product-weight">' + product.weight.toFixed(1) + ' lbs</td><td class="product-price">' + formatCurrency(product.price) + '</td><td class="product-off">' + product.off + '%' + '</td><td class="product-sale">' + formatCurrency(product.salePrice()) + '</td></tr>';
   var $tr = $(tr);
   $('#products').append($tr);
 }
@@ -271,7 +279,7 @@ function htmlAddItemToCart(product){
   $tr.children('.product-name').text(product.name);
   $tr.children('.product-count').text(count);
   $tr.children('.product-amount').text(formatCurrency(amount));
-  $tr.children('.product-weight').text(weight.toFixed(2) + ' lbs');
+  $tr.children('.product-weight').text(weight.toFixed(1) + ' lbs');
   $tr.children('.product-shipping').text(formatCurrency(shipping));
   $tr.children('.product-grand').text(formatCurrency(grand));
 }
@@ -318,7 +326,7 @@ function Product(image, name, weight, price, off){
   this.weight = weight;
   this.price = price;
   this.off = off;
-  this.salePrice = function(){return this.price - (this.price * this.off);};
+  this.salePrice = function(){return this.price - ((this.price * (this.off * Math.pow(10, -2))));};
 }
 
 function Customer(image, name, isDomestic){
