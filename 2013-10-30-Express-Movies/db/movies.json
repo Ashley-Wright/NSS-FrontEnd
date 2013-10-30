@@ -1,0 +1,30 @@
+[
+{
+  "title": "Jaws",
+  "image": "http://cdn.funcheap.com/wp-content/uploads/2013/04/Jaws.jpg",
+  "color": "red",
+  "rated": "R",
+  "studio": "Sony Pictures Classic",
+  "gross": 24234243324,
+  "numTheatres": 23
+},
+{
+  "title": "Carrie",
+  "image": "http://www.blendbureaux.com/wp-content/uploads/2013/04/Carrie.jpg",
+  "color": "blue",
+  "rated": "R",
+  "studio": "Paramount",
+  "gross": 24234243,
+  "numTheatres": 19
+},
+{
+  "title": "Cabin in the Woods",
+  "image": "http://blogs-images.forbes.com/carolpinchefsky/files/2012/04/CabinintheWoods.jpg",
+  "color": "black",
+  "rated": "R",
+  "studio": "Universal",
+  "gross": 2423424,
+  "numTheatres": 15
+}
+
+]
