@@ -1,0 +1,18 @@
+
+extends ../template/layout
+block content
+  h1 Color page
+  a(href = '/colors/new') New Color
+  ul
+    - each color in colors
+      li(style='color:#{color};')= color
+
+
+
+
+  //- - var x = 3
+  //- - var y = 2
+  //- h2= (x*y)
+  //- String interpretation
+  //- - var word = 'funny'
+  //- h3 very #{word}, yes it is
