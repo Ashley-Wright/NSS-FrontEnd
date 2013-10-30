@@ -1,0 +1,5 @@
+#history ul {
+  list-style: none; }
+
+#history ul li:nth-child(odd) {
+  background-color: grey; }

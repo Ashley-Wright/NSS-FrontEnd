@@ -1,0 +1,29 @@
+/#map-canvas
+.row
+  .small-12.columns
+    %h3 Calculator
+.row
+  .small-2.columns
+    %input#op1{type: 'text', placeholder: '#'}
+  .small-1.columns
+    %input#operator{type: 'text', placeholder: '*'}
+  .small-2.columns
+    %input#op2{type: 'text', placeholder: '#'}
+  .small-7.columns
+    %input#calculate.button.small{type: 'button', value: 'CALC'}
+.row
+  .small-12.columns
+    #result
+.row
+  .small-12.columns
+    %input#sum.button.small{type: 'button', value: 'Sum'}
+    %input#product.button.small{type: 'button', value: 'Product'}
+    %input#removeNegatives.button.small{type: 'button', value: 'Remove Negatives'}
+    %input#removePositives.button.small{type: 'button', value: 'Remove Positives'}
+.row
+  .small-12.columns
+    #history
+      %ul
+.row
+  .small-12.columns
+    #output

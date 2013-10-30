@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset='utf-8'>
+  <meta content='width=device-width' name='viewport'>
+  <title>Master Template</title>
+  <link href='/css/normalize.css' rel='stylesheet'>
+  <link href='/css/foundation.css' rel='stylesheet'>
+  <link href='/css/app.css' rel='stylesheet'>
+  <script src='/js/vendor/custom.modernizr.js'></script>
+  <script src='/js/tests/keys.js'></script>
+  <link href='/css/qunit-theme-gabe.css' rel='stylesheet'>
+</head>
+<body>
+  <div id='qunit'></div>
+  <div id='qunit-fixture'>
+    <!-- #map-canvas -->
+    <div class='row'>
+      <div class='small-12 columns'>
+        <h3>Calculator</h3>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-2 columns'>
+        <input id='op1' placeholder='#' type='text'>
+      </div>
+      <div class='small-1 columns'>
+        <input id='operator' placeholder='*' type='text'>
+      </div>
+      <div class='small-2 columns'>
+        <input id='op2' placeholder='#' type='text'>
+      </div>
+      <div class='small-7 columns'>
+        <input class='button small' id='calculate' type='button' value='CALC'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='result'></div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <input class='button small' id='sum' type='button' value='Sum'>
+        <input class='button small' id='product' type='button' value='Product'>
+        <input class='button small' id='removeNegatives' type='button' value='Remove Negatives'>
+        <input class='button small' id='removePositives' type='button' value='Remove Positives'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='history'>
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='output'></div>
+      </div>
+    </div>
+  </div>
+  <script src='/js/vendor/jquery-1.10.2.js'></script>
+  <script src='/js/vendor/foundation.min.js'></script>
+  <script src='/js/vendor/underscore.js'></script>
+  <script src='/js/vendor/moment.min.js'></script>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <!-- %script{src: 'https://maps.googleapis.com/maps/api/js?key=__________&sensor=true'} -->
+  <script src='/js/app/app.js'></script>
+  <script src='/js/vendor/jquery.domchanged.js'></script>
+  <script src='/js/vendor/qunit-1.12.0.js'></script>
+  <script src='/js/tests/master.js'></script>
+</body>

@@ -1,0 +1,14 @@
+// #map-canvas
+// {
+//   height: 250px;
+//   width: 250px;
+//   border: 1px solid black;
+// }
+
+#history ul {
+  list-style: none;
+}
+
+#history ul li:nth-child(odd) {
+  background-color: grey;
+}
