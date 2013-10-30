@@ -1,0 +1,12 @@
+extends ../template/layout
+include ../mixins/form-helper.jade
+
+block content
+  h1 New Item
+  a(href='/list') List
+
+  form(action='/list', method='post')
+    mixin field('name', 'Item', 'Gas', true)
+    mixin field('due', 'Due Date', '10/29/2013')
+    mixin field('color', 'Color', 'Red')
+    button(type='submit') Add Item

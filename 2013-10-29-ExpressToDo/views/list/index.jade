@@ -1,0 +1,17 @@
+extends ../template/layout
+
+block content
+  h1 To Do List
+  a(href='/') Home
+  a(href='/list/new') New Item
+  -var item = items[0]
+  if item
+    table#items
+      thead: tr
+        each value, property in item
+          th= property
+      tbody
+        each item, index in items
+          tr(id=item.name, style = 'background-color: #{item.color}')
+            each value, property in item
+              td(class = property)= value
