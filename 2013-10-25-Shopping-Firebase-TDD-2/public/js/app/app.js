@@ -172,7 +172,7 @@ function clickClearCart(){
 }
 
 function clickSortCart(){
-  var catagory = $(this).text();
+  // var catagory = $(this).text();
   var sort = _.sortBy(db.cart.products, function(p){return p.name;});
   $('#cart tbody').empty();
   _.each(sort, htmlAddItemToCart);
