@@ -1,0 +1,18 @@
+html, body {
+  height: 100%; }
+
+#left, #right {
+  float: left; }
+
+#left {
+  width: 90%;
+  height: 100%; }
+
+#right {
+  width: 10%;
+  padding-top: 20px; }
+
+#map-canvas {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black; }
