@@ -15,3 +15,15 @@ exports.index = function(req, res){
   });
   res.render('movies/index', {title: 'Movies Page', movies: movies});
 };
+
+/*
+ * Delete /movies
+ */
+
+exports.delete = function(req, res){
+  var title = req.params.title;
+  var movies = db.read(file);
+  movies = _.reject(movies, function(movie){return movie.title === title;});
+  db.write(file, movies);
+  res.redirect('/movies');
+};

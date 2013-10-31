@@ -29,6 +29,7 @@ if ('development' == app.get('env')) {
 // route definitions
 app.get('/', home.index);
 app.get('/movies', movies.index);
+app.delete('/movies/:title', movies.delete);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){
