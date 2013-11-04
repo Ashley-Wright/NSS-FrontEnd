@@ -1,0 +1,30 @@
+extends ../template/layout
+
+block content
+  .row
+    .small-12.columns
+      h1.subheader Post
+  .row
+    .small-2.columns
+      a.button.small.radius.expand(href='/') Home
+    .small-2.columns
+      a.button.small.radius.expand(href='/posts') Posts
+    .small-2.columns
+      a.button.small.radius.expand.success(href='/posts/new') New
+    .small-6.columns
+  .row
+    .small-12.columns
+      table.post
+        thead: tr
+          th Title
+          th Author
+          th Date
+          th Tags
+        tbody
+          tr
+            td: a(href='/posts/#{post.id}')= post.title
+            td= post.author
+            td= post.date
+            td= post.tags
+      img(src=post.image)
+      p= post.content

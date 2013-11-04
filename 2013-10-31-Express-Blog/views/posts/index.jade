@@ -1,0 +1,40 @@
+extends ../template/layout
+
+block content
+  .row
+    .small-12.columns
+      h1.subheader Posts
+  .row
+    .small-2.columns
+      a.button.small.radius.expand(href='/') Home
+    .small-2.columns
+      a.button.small.radius.expand(href='/posts') Posts
+    .small-2.columns
+      a.button.small.radius.expand.success(href='/posts/new') New
+    .small-6.columns
+  .row
+    .small-12.columns
+      #posts
+        each post in posts
+          table.post
+            thead: tr
+              th Title
+              th Author
+              th Date
+              th Tags
+              th
+            tbody
+              tr
+                td: a(href='/posts/#{post.id}')= post.title
+                td= post.author
+                td= post.date
+                td= post.tags
+                td
+                  form(action='/posts/#{post.id}', method='post')
+                    input(type='hidden', name='_method', value='delete')
+                    button.tiny.radius.alert(type='submit') Delete
+          img(src=post.image)
+          p= post.content
+
+
+
