@@ -7,7 +7,7 @@ body{
   background-color: @base;
 }
 
-h1{
+#header{
   font: 55px/120% 'Racing Sans One', cursive;
   // background-color: thistle;
   // font-family: 'Playfair Display:700italic';
@@ -21,4 +21,45 @@ fieldset{
 
 #lyrics{
   height: 250px;
+}
+
+.song{
+
+  img {
+    max-height: 250px;
+  }
+}
+
+.showSong{
+
+  p img {
+    max-width: 300px;
+    float: left;
+    padding-right: 20px;
+  }
+
+  .right {
+    width: 600px;
+    float: left;
+
+    .showLyrics {
+      padding-top: 15px;
+      border: 1px solid #6F6F6F;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    span{
+      width: 60px;
+      color: blue;
+      display: inline-block;
+    }
+
+  }
+
+}
+
+.clear{
+  clear: both;
 }

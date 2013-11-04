@@ -25,12 +25,28 @@ exports.new = function(req, res){
  */
 
 exports.create = function(req, res){
-  console.log('before');
-  console.log(req.body);
   req.body.genres = req.body.genres.split(', ');
   new Song(req.body).save(function(err, song, count){
-    console.log('after');
-    console.log(song);
+    res.redirect('/songs');
+  });
+};
+
+/*
+ * GET /songs/:id
+ */
+
+exports.show = function(req, res){
+  Song.findById(req.params.id, function(err, song){
+    res.render('songs/show', {title: 'Song', song: song});
+  });
+};
+
+/*
+ * Delete /songs/:id
+ */
+
+exports.delete = function(req, res){
+  Song.findByIdAndRemove(req.params.id, function(err, song){
     res.redirect('/songs');
   });
 };

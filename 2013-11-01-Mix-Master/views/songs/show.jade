@@ -1,0 +1,24 @@
+extends ../template/layout
+
+block content
+  .row
+    .small-12.columns
+      .showSong
+        h1.subheader= song.title
+        p: img(src=song.art)
+        .right
+          audio(src='/audios/#{song.filename}' , controls=true)
+          //- p= song.duration
+          //- .clear
+          //- - var tag song.genres.splice(',')
+          //- p= tag
+          //- each genre in song.genres
+          //-   span: a(href='#')= genre
+          p.showLyrics= song.lyrics
+          ul
+            each genre in song.genres
+              li= genre
+          p= song.createdAt
+          form(action='/songs/#{song.id}', method='post')
+            input(type='hidden', name='_method', value='delete')
+            button.tiny.radius.alert(type='submit') Delete
