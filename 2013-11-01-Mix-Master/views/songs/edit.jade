@@ -7,15 +7,16 @@ block content
       include ../template/errors
   .row
     .small-12.columns
-      form(action='/songs', method='post')
+      form(action='/songs/#{song.id}', method='post')
         fieldset
-          legend Add a Song
+          legend Edit Song
+          input(type='hidden', name='_method', value='put')
           .row
-            mixin field(8, 'title', 'Title', null, null, true)
-            mixin field(4, 'duration', 'Song Duration (seconds)')
+            mixin field(8, 'title', 'Title', song.title, null, true)
+            mixin field(4, 'duration', 'Song Duration (seconds)', song.duration)
           .row
-            mixin field(4, 'art', 'Cover Art')
-            mixin field(8, 'filename', 'filename')
+            mixin field(4, 'art', 'Cover Art', song.art)
+            mixin field(8, 'filename', 'filename', song.filename)
           .row
             .small-12.columns
               each genre in genres
@@ -24,7 +25,7 @@ block content
           .row
             .small-12.columns
               label(for='lyrics') Lyrics:
-              textarea#lyrics(name='lyrics')
+              textarea#lyrics(name='lyrics')= song.lyrics
           .row
             .small-2.columns.small-offset-8: a.button.radius.alert.small.expand(href='/songs') Cancel
             .small-2.columns: button.radius.success.small.expand(type='submit') Save Song

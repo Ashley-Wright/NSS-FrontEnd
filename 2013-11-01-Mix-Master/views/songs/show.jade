@@ -8,17 +8,13 @@ block content
         p: img(src=song.art)
         .right
           audio(src='/audios/#{song.filename}' , controls=true)
-          //- p= song.duration
-          //- .clear
-          //- - var tag song.genres.splice(',')
-          //- p= tag
-          //- each genre in song.genres
-          //-   span: a(href='#')= genre
           p.showLyrics= song.lyrics
           ul
             each genre in song.genres
-              li= genre
+              li= genre.name
           p= song.createdAt
+          span: a.button.tiny.radius(href='/songs/#{song.id}/edit') Edit
           form(action='/songs/#{song.id}', method='post')
             input(type='hidden', name='_method', value='delete')
             button.tiny.radius.alert(type='submit') Delete
+
