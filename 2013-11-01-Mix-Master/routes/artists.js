@@ -35,3 +35,11 @@ exports.create = function(req, res){
     res.redirect('/artists');
   });
 };
+
+/*
+ * GET /artist/:id
+ */
+
+exports.show = function(req, res){
+  res.render('artist/show', {title: 'Express', artist: artist});
+};

@@ -19,9 +19,12 @@ block content
             mixin field(8, 'filename', 'filename', song.filename)
           .row
             .small-12.columns
+              -var songGenres = []
+              - for(i = 0; i < song.genres.length; i++){songGenres.push(song.genres[i].name);}
               each genre in genres
                 input(type='checkbox', value=genre.id, name='genres')
                 span= genre.name
+              p= songGenres
           .row
             .small-12.columns
               label(for='lyrics') Lyrics:

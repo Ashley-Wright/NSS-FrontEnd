@@ -5,6 +5,6 @@ block content
     .small-12.columns
       ul
         each genre in genres
-          li= genre.name
+          li: a(href='genres/#{genre.id}')= genre.name
             span: a.button.tiny.radius(href='/genres/#{genre.id}/edit') Edit
 

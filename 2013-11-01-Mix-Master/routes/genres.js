@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose');
+var Song = mongoose.model('Song');
 var Genre = mongoose.model('Genre');
 
 /*
@@ -52,4 +53,22 @@ exports.update = function(req, res){
   Genre.findByIdAndUpdate(req.params.id, req.body, function(err, genre){
     res.redirect('/genres');
   });
+};
+
+/*
+ * GET /genres/:id
+ */
+
+exports.show = function(req, res){
+  Genre.findById(req.params.id, function(err, song){
+    res.render('genres/show', {title: 'Express', genre: genre});
+  });
+};
+
+/*
+ * Delete /genres/:id
+ */
+
+exports.delete = function(req, res){
+  res.redirect('/genres');
 };
