@@ -4,6 +4,7 @@ function initialize(){
   $(document).foundation();
   $('form#priority').on('submit', submitPriority);
   $('form#todo').on('submit', submitTodo);
+  $('table#todos').on('click', '.delete button', clickDelete);
 }
 
 function submitAjaxForm(e, form, successFn){
@@ -35,6 +36,26 @@ function submitPriority(e){
   });
 }
 
+function clickDelete(){
+  var id = $(this).parent().parent().data('todo-id');
+  sendGenericAjaxRequest('/todos/' + id, {}, 'post', 'delete', null, function(data, status, jqXHR){
+    htmlRemoveTodo(data);
+  });
+}
+
+function sendGenericAjaxRequest(url, data, verb, altVerb, event, successFn){
+  var options = {};
+  options.url = url;
+  options.type = verb;
+  options.data = data;
+  options.success = successFn;
+  options.error = function(jqXHR, status, error){console.log(error);};
+
+  if(altVerb) options.data._method = altVerb;
+  $.ajax(options);
+  if(event) event.preventDefault();
+}
+
 function htmlAddPriorityToSelect(priority){
   var $option = $('<option>');
   $option.val(priority._id);
@@ -43,7 +64,7 @@ function htmlAddPriorityToSelect(priority){
 
   $('form#priority input').val('');
   $('form#priority input[name="name"').focus();
-};
+}
 
 function htmlAddTodoToTable(todo){
   var $title = $('<td>');
@@ -59,5 +80,8 @@ function htmlAddTodoToTable(todo){
   $tr.css('background-color', todo.priority.color);
   $tr.append($title, $dueDate, $priority);
   $('table#todos tbody').append($tr);
+}
 
+function htmlRemoveTodo(todo){
+  $('tr[data-todo-id="' + todo._id + '"]').remove();
 }

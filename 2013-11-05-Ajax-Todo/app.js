@@ -37,6 +37,7 @@ app.get('/', home.index);
 app.get('/todos', todos.index);
 app.post('/priorities', priorities.create);
 app.post('/todos', todos.create);
+app.delete('/todos/:id', todos.delete);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){
