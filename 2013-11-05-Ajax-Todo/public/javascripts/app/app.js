@@ -5,6 +5,7 @@ function initialize(){
   $('form#priority').on('submit', submitPriority);
   $('form#todo').on('submit', submitTodo);
   $('table#todos').on('click', '.delete button', clickDelete);
+  $('table#todos').on('click', 'input[type="checkbox"]', clickCompleted);
 }
 
 function submitAjaxForm(e, form, successFn){
@@ -43,6 +44,14 @@ function clickDelete(){
   });
 }
 
+function clickCompleted(){
+  var id = $(this).parent().parent().data('todo-id');
+  sendGenericAjaxRequest('/todos/' + id + '/completed', {}, 'post', 'put', null, function(data, status, jqXHR){
+    htmlTodoCompleted(data);
+  });
+}
+
+
 function sendGenericAjaxRequest(url, data, verb, altVerb, event, successFn){
   var options = {};
   options.url = url;
@@ -67,6 +76,11 @@ function htmlAddPriorityToSelect(priority){
 }
 
 function htmlAddTodoToTable(todo){
+  var $completed = $('<td>');
+  $completed.addClass('completed');
+  var $input = $('<input type="checkbox">');
+  $completed.append($input);
+
   var $title = $('<td>');
   $title.text(todo.title);
 
@@ -78,10 +92,15 @@ function htmlAddTodoToTable(todo){
 
   var $tr = $('<tr>');
   $tr.css('background-color', todo.priority.color);
-  $tr.append($title, $dueDate, $priority);
+  $tr.append($completed, $title, $dueDate, $priority);
   $('table#todos tbody').append($tr);
 }
 
 function htmlRemoveTodo(todo){
   $('tr[data-todo-id="' + todo._id + '"]').remove();
+}
+
+function htmlTodoCompleted(todo){
+  var decoration = todo.completed ? 'line-through' : 'none';
+  $('tr[data-todo-id="' + todo._id + '"]').css('text-decoration', decoration);
 }

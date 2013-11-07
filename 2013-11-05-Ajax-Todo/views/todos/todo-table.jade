@@ -7,7 +7,8 @@ table#todos
       th
   tbody
     each todo in todos
-      tr(data-todo-id=todo.id, style='background-color:#{todo.priority.color};')
+      tr(data-todo-id=todo.id, style='background-color:#{todo.priority.color};text-decoration:#{todo.completed ? "line-through" : "none"};')
+        td.completed: input(type='checkbox', checked=todo.completed)
         td= todo.title
         td= todo.dueDate
         td= todo.priority.name

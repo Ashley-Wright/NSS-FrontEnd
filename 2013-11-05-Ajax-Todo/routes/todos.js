@@ -36,3 +36,16 @@ exports.delete = function(req, res){
     res.send(todo);
   });
 };
+
+/*
+ * Put /todos/:id/complete
+ */
+
+exports.completed = function(req, res){
+  Todo.findById(req.params.id, function(err, todo){
+    todo.completed = !todo.completed;
+    todo.save(function(err, todo){
+      res.send(todo);
+    });
+  });
+};
