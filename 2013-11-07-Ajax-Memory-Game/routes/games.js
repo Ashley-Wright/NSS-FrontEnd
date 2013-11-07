@@ -25,6 +25,13 @@ exports.create = function(req, res){
   var array1 = _.range(game.numSquares);
   var array2 = _.range(game.numSquares);
   var array = array1.concat(array2);
-  game.cardArray = _.shuffle(array);
-  res.send(game);
+  array = _.shuffle(array);
+  game.cardArray = array;
+
+  var obj = {};
+  obj.array = game.cardArray.length;
+
+  game.save(function(err, game){
+    res.send(obj);
+  });
 };
