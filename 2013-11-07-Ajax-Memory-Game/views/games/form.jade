@@ -1,0 +1,7 @@
+form#game(action='/games/start', method='post')
+  fieldset
+    legend New Game
+    .row
+      mixin field(5, 'player', null, null, 'Name', true)
+      mixin field(3, 'squares', null, null, 'Number of Match Pairs', true)
+      .small-4.columns: button.radius.success.small.expand(type='submit') Start
