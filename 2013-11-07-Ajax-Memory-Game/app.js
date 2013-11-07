@@ -1,3 +1,5 @@
+require('./models/game');
+
 // express application
 var games = require('./routes/games');
 

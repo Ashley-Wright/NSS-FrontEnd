@@ -1,4 +1,7 @@
 var colors = require('colors');
+var mongoose = require('mongoose');
+var Game = mongoose.model('Game');
+var _ = require('lodash');
 // Colors
 // bold, italic, underline, inverse, yellow, cyan,
 // white, magenta, green, red, grey, blue, rainbow,
@@ -18,6 +21,10 @@ exports.index = function(req, res){
  */
 
 exports.create = function(req, res){
-  var game = req.body;
+  var game = new Game(req.body);
+  var array1 = _.range(game.numSquares);
+  var array2 = _.range(game.numSquares);
+  var array = array1.concat(array2);
+  game.cardArray = _.shuffle(array);
   res.send(game);
 };
